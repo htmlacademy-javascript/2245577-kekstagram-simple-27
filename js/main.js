@@ -29,7 +29,7 @@ let photoDescription = [
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-let createPhoto = (index) => ({
+const createPhoto = (index) => ({
   id: index,
   url: `photos/${index + 1}.jpg`,
   description: getRandomArrayElement(photoDescription),
