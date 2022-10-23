@@ -1,4 +1,8 @@
 const PICTURES_COUNT = 25;
+const LikesCount = {
+MIN: 15,
+MAX: 200,
+};
 
 const photoDescription = [
   'На пляже',
