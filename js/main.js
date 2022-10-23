@@ -4,6 +4,11 @@ MIN: 15,
 MAX: 200,
 };
 
+const CommentsCount = {
+MIN: 0,
+MAX: 200,
+};
+
 const photoDescription = [
   'На пляже',
   'Сегодня отличная погода',
