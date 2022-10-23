@@ -13,7 +13,7 @@ function checkStringLength(string, length) {
   return string.length <= length;
 }
 
-let picturesCount = 25;
+const PICTURES_COUNT = 25;
 
 let photoDescription = [
   'На пляже',
@@ -27,11 +27,11 @@ let photoDescription = [
   'Обучение программированию)',
 ];
 
-let getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 let createPhoto = (index) => ({
   id: index,
-  url: 'photos/${index + 1}.jpg',
+  url: `photos/${index + 1}.jpg`,
   description: getRandomArrayElement(photoDescription),
   likes: getRandomPositiveInteger(15, 200),
   comments: getRandomPositiveInteger(0, 200),
