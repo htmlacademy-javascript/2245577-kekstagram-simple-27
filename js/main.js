@@ -15,7 +15,7 @@ function checkStringLength(string, length) {
 
 const PICTURES_COUNT = 25;
 
-let photoDescription = [
+const photoDescription = [
   'На пляже',
   'Сегодня отличная погода',
   'Зацените какая  картина у меня получилась',
