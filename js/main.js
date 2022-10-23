@@ -1,13 +1,13 @@
 const PICTURES_COUNT = 25;
 
 const LikesCount = {
-MIN: 15,
-MAX: 200,
+  MIN: 15,
+  MAX: 200,
 };
 
 const CommentsCount = {
-MIN: 0,
-MAX: 200,
+  MIN: 0,
+  MAX: 200,
 };
 
 const photoDescription = [
@@ -35,7 +35,7 @@ function getRandomPositiveInteger(a, b) {
 
 function checkStringLength(string, length) {
   return string.length <= length;
-};
+}
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
@@ -43,12 +43,13 @@ const createPhoto = (index) => ({
   id: index,
   url: `photos/${index + 1}.jpg`,
   description: getRandomArrayElement(photoDescription),
-  likes: getRandomPositiveInteger(LikesCount.MIN,  LikesCount.MAX),
+  likes: getRandomPositiveInteger(LikesCount.MIN, LikesCount.MAX),
   comments: getRandomPositiveInteger(CommentsCount.MIN, CommentsCount.MAX),
 });
 
- const photoSimulation = () =>
- Array.from({ length: PICTURES_COUNT }, (_, index) =>
- createPhoto(index));
- 
-console.log(photoSimulation);
+const photoSimulation = () =>
+  Array.from({ length: PICTURES_COUNT }, (_, index) =>
+    createPhoto(index));
+
+console.log(photoSimulation());
+
