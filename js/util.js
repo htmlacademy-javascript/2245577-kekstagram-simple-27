@@ -15,5 +15,5 @@ function checkStringLength(string, length) {
   return string.length <= length;
 }
 
-export{getRandomPositiveInteger, getRandomArrayElement, checkStringLength};
+export{getRandomPositiveInteger, getRandomArrayElement};
 
