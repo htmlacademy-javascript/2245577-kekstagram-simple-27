@@ -24,16 +24,18 @@ const photoDescription = [
   'Обучение программированию)',
 ];
 
-const createPhoto = (index) => ({
-  id: index,
-  url: `photos/${index + 1}.jpg`,
+const createPhoto = (id) => ({
+  id: id,
+  url: `photos/${id + 1}.jpg`,
   description: getRandomArrayElement(photoDescription),
   likes: getRandomPositiveInteger(LikesCount.MIN, LikesCount.MAX),
   comments: getRandomPositiveInteger(CommentsCount.MIN, CommentsCount.MAX),
 });
 
-const photoSimulation = () =>
+const generatePhoto = () =>
   Array.from({ length: PICTURES_COUNT }, (_, index) =>
     createPhoto(index));
 
-export {photoSimulation};
+export {generatePhoto};
+
+
