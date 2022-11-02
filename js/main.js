@@ -1,3 +1,1 @@
-import {photoSimulation} from './data.js';
-console.log(photoSimulation());
-
+import './render.js';
