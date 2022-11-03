@@ -32,10 +32,10 @@ const createPhoto = (id) => ({
   comments: getRandomPositiveInteger(CommentsCount.MIN, CommentsCount.MAX),
 });
 
-const generatePhoto = () =>
+const generatePhotos = () =>
   Array.from({ length: PICTURES_COUNT }, (_, index) =>
     createPhoto(index));
 
-export {generatePhoto};
+export {generatePhotos};
 
 
