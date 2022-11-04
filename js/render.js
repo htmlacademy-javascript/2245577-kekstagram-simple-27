@@ -1,4 +1,4 @@
-import {generatePhoto} from './data.js';
+import {generatePhotos} from './data.js';
 
 
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
@@ -6,7 +6,7 @@ const picturesContainer = document.querySelector('.pictures');
 
 const picturesListFragment = document.createDocumentFragment();
 
-const photos = generatePhoto();
+const photos = generatePhotos();
 
 photos.forEach((photo) => {
   const userPhoto = templatePicture.cloneNode(true);

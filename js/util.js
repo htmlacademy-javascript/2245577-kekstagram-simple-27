@@ -15,5 +15,6 @@ function checkStringLength(string, length) {
   return string.length <= length;
 }
 
-export{getRandomPositiveInteger, getRandomArrayElement, checkStringLength};
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
+export{getRandomPositiveInteger, getRandomArrayElement, checkStringLength, isEscapeKey};
