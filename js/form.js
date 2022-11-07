@@ -1,5 +1,7 @@
-import {isEscapeKey} from './util.js';
 
+import { isEscapeKey } from './util.js';
+import { resetScale } from './scale.js';
+import { resetEffects } from './effects.js';
 const userForm = document.querySelector('.img-upload__form');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
@@ -21,6 +23,8 @@ const showModal = () => {
 
 const hideModal = () => {
   userForm.reset();
+  resetScale();
+  resetEffects();
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onEscapeKey);
@@ -33,11 +37,10 @@ function onEscapeKey(evt) {
   }
 }
 
-uploadFile.addEventListener('change', () => {
+uploadFile.addEventListener('change', 'showModal', () => {
   showModal();
 });
-
-closeButton.addEventListener('click', () => {
+closeButton.addEventListener('click', 'showModal', () => {
   hideModal();
 });
 
