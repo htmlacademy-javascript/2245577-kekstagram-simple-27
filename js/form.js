@@ -37,10 +37,10 @@ function onEscapeKey(evt) {
   }
 }
 
-uploadFile.addEventListener('change', 'showModal', () => {
+uploadFile.addEventListener('change', showModal, () => {
   showModal();
 });
-closeButton.addEventListener('click', 'showModal', () => {
+closeButton.addEventListener('click', showModal, () => {
   hideModal();
 });
 

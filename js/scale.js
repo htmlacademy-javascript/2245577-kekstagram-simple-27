@@ -13,7 +13,7 @@ const setPictureScale = () => {
   imgPreview.style.transform = `scale(${currentValue / MAX_SCALE})`;
 };
 
-const onSmallerButton = () => {
+const onDecreaseScaleButtonClick = () => {
   const currentScaleValue = parseFloat(scaleValue.value);
   if (currentScaleValue > MIN_SCALE) {
     scaleValue.value = `${currentScaleValue - SCALE_STEP}%`;
@@ -21,7 +21,7 @@ const onSmallerButton = () => {
   }
 };
 
-const onBiggerButton = () => {
+const onIncreaseScaleButtonClick = () => {
   const currentScaleValue = parseFloat(scaleValue.value);
   if (currentScaleValue < MAX_SCALE) {
     scaleValue.value = `${currentScaleValue + SCALE_STEP}%`;
@@ -33,7 +33,7 @@ const resetScale = () => {
   setPictureScale(DEFAULT_SCALE);
 };
 
-smallerButton.addEventListener('click', onSmallerButton);
-biggerButton.addEventListener('click', onBiggerButton);
+smallerButton.addEventListener('click', onDecreaseScaleButtonClick);
+biggerButton.addEventListener('click', onIncreaseScaleButtonClick);
 
 export { resetScale };
