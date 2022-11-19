@@ -53,6 +53,7 @@ const EFFECTS = [
 ];
 
 const DEFAULT_EFFECT = EFFECTS[0];
+
 let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
