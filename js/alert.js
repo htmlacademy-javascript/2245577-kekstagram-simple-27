@@ -6,7 +6,6 @@ const showAlert = (alert) => {
   const alertTemplate = document.querySelector(`#${alert}`).content.querySelector(`.${alert}`);
   const alertElement = alertTemplate.cloneNode(true);
   const alertButtonElement = alertElement.querySelector(`.${alert}__button`);
-
   const onEscapeKeyDown = (evt) => {
     if (isEscapeKey(evt)) {
       onCloseAlertElement();
@@ -29,7 +28,6 @@ const showAlert = (alert) => {
   alertButtonElement.addEventListener('click', onCloseAlertElement);
   document.addEventListener('click', onOutClick);
   document.addEventListener('keydown', onEscapeKeyDown);
-
   document.body.appendChild(alertElement);
 };
 
@@ -44,11 +42,8 @@ const alertMessage = (message) => {
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
-
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);

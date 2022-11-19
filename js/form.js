@@ -33,7 +33,6 @@ const openImageEditingForm = () => {
   imgUploadOverlay.classList.remove('hidden');
   imageScale.className = '';
   document.body.classList.add('modal-open');
-
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
@@ -65,7 +64,6 @@ function onEscapeKey(evt) {
 
 uploadFile.addEventListener('change', showModal);
 closeButton.addEventListener('click', hideModal);
-
 userForm.addEventListener('click', (evt) => {
   if (evt.target.className === 'img-upload__overlay') {
     hideModal();
@@ -114,7 +112,6 @@ function closeImageEditingForm () {
   pictureEffectButtons[0].checked = true;
   textArea.value = '';
   document.body.classList.remove('modal-open');
-
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 

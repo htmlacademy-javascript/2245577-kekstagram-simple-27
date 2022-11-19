@@ -7,6 +7,5 @@ import { showAlert } from './util.js';
 import { renderPictures } from './render.js';
 import { handleSubmit, closeImageEditingForm } from './form.js';
 
-
 getData(renderPictures, showAlert);
 handleSubmit(closeImageEditingForm);
