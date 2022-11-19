@@ -22,26 +22,24 @@ const DefaultValues = {
   TRANSFORM_SCALE: 1
 };
 
-function onPopupEscKeydown(evt) {
+const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeImageEditingForm();
   }
-}
+};
 
-function openImageEditingForm() {
+const openImageEditingForm = () => {
   imgUploadOverlay.classList.remove('hidden');
-  //imageScale.className = '';
+  imageScale.className = '';
   document.body.classList.add('modal-open');
 
   document.addEventListener('keydown', onPopupEscKeydown);
-}
+};
 
 uploadFile.addEventListener('change', openImageEditingForm);
-
 closeButton.addEventListener('click', closeImageEditingForm);
-
-//closeButton.addEventListener('keydown', onPopupEscKeydown);
+closeButton.addEventListener('keydown', onPopupEscKeydown);
 
 const showModal = () => {
   imgUploadOverlay.classList.remove('hidden');
@@ -74,27 +72,25 @@ userForm.addEventListener('click', (evt) => {
   }
 });
 
-function blockSubmitButton() {
+const blockSubmitButton = () => {
   imgButtonSubmit.disabled = true;
   imgButtonSubmit.textContent = 'Публикую...';
-}
+};
 
-function unblockSubmitButton() {
+const unblockSubmitButton = () => {
   imgButtonSubmit.disabled = false;
   imgButtonSubmit.textContent = 'Опубликовать';
-}
+};
 
-function showMessage (message) {
-  console.log(message);
+const showMessage = (message) => {
   if (message === 'Success') {
     showSuccessMessage();
   } else {
     showErrorMessage();
   }
+};
 
-}
-
-function handleSubmit(onSuccess) {
+const handleSubmit = (onSuccess) => {
   userForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const isValid = pristine.validate();
@@ -104,23 +100,10 @@ function handleSubmit(onSuccess) {
       sendData(onSuccess, showMessage, data);
       unblockSubmitButton();
     }
-
-  //   sendData(
-  //     () => {
-  //       onSuccess();
-  //       unblockSubmitButton();
-  //       showSuccessMessage();
-  //     },
-  //     () => {
-  //     showErrorMessage();
-  //       unblockSubmitButton();
-  //     },
-  //     new FormData(evt.target)
-  //   );
   });
-}
+};
 
-function closeImageEditingForm() {
+function closeImageEditingForm () {
   imgUploadOverlay.classList.add('hidden');
   sliderElement.classList.add('hidden');
   imageScale.className = '';

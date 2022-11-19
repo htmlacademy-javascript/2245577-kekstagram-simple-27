@@ -3,7 +3,7 @@ import { isEscapeKey } from './util.js';
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 
-function showSuccessMessage() {
+const showSuccessMessage = () => {
   const successFragment = document.createDocumentFragment();
   const successElement = successTemplate.cloneNode(true);
   successFragment.append(successElement);
@@ -28,9 +28,9 @@ function showSuccessMessage() {
       successElement.remove();
     }
   }
-}
+};
 
-function showErrorMessage() {
+const showErrorMessage = () => {
   const errorFragment = document.createDocumentFragment();
   const errorElement = errorTemplate.cloneNode(true);
 
@@ -56,6 +56,6 @@ function showErrorMessage() {
       errorElement.remove();
     }
   }
-}
+};
 
 export { showSuccessMessage, showErrorMessage };

@@ -7,23 +7,23 @@ const showAlert = (alert) => {
   const alertElement = alertTemplate.cloneNode(true);
   const alertButtonElement = alertElement.querySelector(`.${alert}__button`);
 
+  const onEscapeKeyDown = (evt) => {
+    if (isEscapeKey(evt)) {
+      onCloseAlertElement();
+    }
+  };
+
+  const onOutClick = (evt) => {
+    if (evt.target.matches('section')) {
+      onCloseAlertElement();
+    }
+  };
+
   function onCloseAlertElement () {
     alertElement.remove();
     alertButtonElement.removeEventListener('click', onCloseAlertElement);
     document.removeEventListener('click', onOutClick);
     document.removeEventListener('keydown', onEscapeKeyDown);
-  }
-
-  function onEscapeKeyDown (evt) {
-    if (isEscapeKey(evt)) {
-      onCloseAlertElement();
-    }
-  }
-
-  function onOutClick (evt) {
-    if (evt.target.matches('section')) {
-      onCloseAlertElement();
-    }
   }
 
   alertButtonElement.addEventListener('click', onCloseAlertElement);
