@@ -7,8 +7,8 @@ import { pristine } from './validate.js';
 
 const userForm = document.querySelector('.img-upload__form');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
-const uploadFile = document.querySelector('#upload-file');
-const closeButton = document.querySelector('#upload-cancel');
+const onUploadFile = document.querySelector('#upload-file');
+const onCloseButton = document.querySelector('#upload-cancel');
 const imgButtonSubmit = document.querySelector('.img-upload__submit');
 const sliderElement = imgUploadOverlay.querySelector('.effect-level__slider');
 const imageScale = imgUploadOverlay.querySelector('[data-preview-image="image"]');
@@ -36,9 +36,9 @@ const openImageEditingForm = () => {
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-uploadFile.addEventListener('change', openImageEditingForm);
-closeButton.addEventListener('click', closeImageEditingForm);
-closeButton.addEventListener('keydown', onPopupEscKeydown);
+onUploadFile.addEventListener('change', openImageEditingForm);
+onCloseButton.addEventListener('click', closeImageEditingForm);
+onCloseButton.addEventListener('keydown', onPopupEscKeydown);
 
 const showModal = () => {
   imgUploadOverlay.classList.remove('hidden');
@@ -62,13 +62,8 @@ function onEscapeKey(evt) {
   }
 }
 
-uploadFile.addEventListener('change', showModal);
-closeButton.addEventListener('click', hideModal);
-userForm.addEventListener('click', (evt) => {
-  if (evt.target.className === 'img-upload__overlay') {
-    hideModal();
-  }
-});
+onUploadFile.addEventListener('change', showModal);
+onCloseButton.addEventListener('click', hideModal);
 
 const blockSubmitButton = () => {
   imgButtonSubmit.disabled = true;
@@ -108,7 +103,7 @@ function closeImageEditingForm () {
   imageScale.style.transform = `scale(${DefaultValues.TRANSFORM_SCALE})`;
   imageScale.style.filter = '';
   scaleField.value = `${DefaultValues.SCALE_VALUE}%`;
-  uploadFile.value = '';
+  onUploadFile.value = '';
   pictureEffectButtons[0].checked = true;
   textArea.value = '';
   document.body.classList.remove('modal-open');

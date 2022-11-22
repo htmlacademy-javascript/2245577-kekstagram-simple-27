@@ -31,7 +31,7 @@ const showAlert = (alert) => {
   document.body.appendChild(alertElement);
 };
 
-const alertMessage = (message) => {
+const alertingMessage = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';
   alertContainer.style.position = 'absolute';
@@ -49,4 +49,4 @@ const alertMessage = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export { showAlert, alertMessage };
+export { showAlert, alertingMessage };

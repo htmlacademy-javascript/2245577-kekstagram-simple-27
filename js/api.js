@@ -1,5 +1,8 @@
+const GET_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
+const SEND_URL = 'https://27.javascript.pages.academy/kekstagram-simple';
+
 const getData = (onSuccess, onError) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(GET_URL)
     .then((response) => {
       if (response.ok) {
         return response;
@@ -12,7 +15,7 @@ const getData = (onSuccess, onError) => {
 };
 
 const sendData = (onSuccess, showMessage, body) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple',
+  fetch(SEND_URL,
     {
       method: 'POST',
       body: body
