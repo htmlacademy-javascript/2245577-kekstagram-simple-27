@@ -7,8 +7,8 @@ import { pristine } from './validate.js';
 
 const userForm = document.querySelector('.img-upload__form');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
-const onUploadFile = document.querySelector('#upload-file');
-const onCloseButton = document.querySelector('#upload-cancel');
+const uploadFile = document.querySelector('#upload-file');
+const closeButton = document.querySelector('#upload-cancel');
 const imgButtonSubmit = document.querySelector('.img-upload__submit');
 const sliderElement = imgUploadOverlay.querySelector('.effect-level__slider');
 const imageScale = imgUploadOverlay.querySelector('[data-preview-image="image"]');
@@ -25,21 +25,21 @@ const DefaultValues = {
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeImageEditingForm();
+    onCloseImageEditingForm();
   }
 };
 
-const showModal = () => {
+const onShowModal = () => {
   imgUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-onUploadFile.addEventListener('change', showModal);
-onCloseButton.addEventListener('click', closeImageEditingForm);
-onCloseButton.addEventListener('keydown', onPopupEscKeydown);
+uploadFile.addEventListener('change', onShowModal);
+closeButton.addEventListener('click', onCloseImageEditingForm);
+closeButton.addEventListener('keydown', onPopupEscKeydown);
 
-const hideModal = () => {
+const onHideModal = () => {
   userForm.reset();
   resetScale();
   resetEffects();
@@ -48,8 +48,8 @@ const hideModal = () => {
   document.removeEventListener('keydown', onPopupEscKeydown);
 };
 
-onUploadFile.addEventListener('change', showModal);
-onCloseButton.addEventListener('click', hideModal);
+uploadFile.addEventListener('change', onShowModal);
+closeButton.addEventListener('click', onHideModal);
 
 const blockSubmitButton = () => {
   imgButtonSubmit.disabled = true;
@@ -81,19 +81,19 @@ const handleSubmit = (onSuccess) => {
   });
 };
 
-function closeImageEditingForm () {
+function onCloseImageEditingForm () {
   imgUploadOverlay.classList.add('hidden');
   sliderElement.classList.add('hidden');
   imageScale.className = '';
   imageScale.style.transform = `scale(${DefaultValues.TRANSFORM_SCALE})`;
   imageScale.style.filter = '';
   scaleField.value = `${DefaultValues.SCALE_VALUE}%`;
-  onUploadFile.value = '';
+  uploadFile.value = '';
   pictureEffectButtons[0].checked = true;
   textArea.value = '';
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-export { handleSubmit, closeImageEditingForm, onPopupEscKeydown, unblockSubmitButton };
+export { handleSubmit, onCloseImageEditingForm, onPopupEscKeydown, unblockSubmitButton };
 
