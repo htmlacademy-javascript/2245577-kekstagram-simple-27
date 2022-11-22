@@ -29,22 +29,15 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
-const openImageEditingForm = () => {
+const showModal = () => {
   imgUploadOverlay.classList.remove('hidden');
-  imageScale.className = '';
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-onUploadFile.addEventListener('change', openImageEditingForm);
+onUploadFile.addEventListener('change', showModal);
 onCloseButton.addEventListener('click', closeImageEditingForm);
 onCloseButton.addEventListener('keydown', onPopupEscKeydown);
-
-const showModal = () => {
-  imgUploadOverlay.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscapeKey);
-};
 
 const hideModal = () => {
   userForm.reset();
@@ -52,15 +45,8 @@ const hideModal = () => {
   resetEffects();
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscapeKey);
+  document.removeEventListener('keydown', onPopupEscKeydown);
 };
-
-function onEscapeKey(evt) {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    hideModal();
-  }
-}
 
 onUploadFile.addEventListener('change', showModal);
 onCloseButton.addEventListener('click', hideModal);
@@ -91,7 +77,6 @@ const handleSubmit = (onSuccess) => {
       const data = new FormData(evt.target);
       blockSubmitButton();
       sendData(onSuccess, showMessage, data);
-      unblockSubmitButton();
     }
   });
 };
@@ -110,5 +95,5 @@ function closeImageEditingForm () {
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-export { handleSubmit, closeImageEditingForm };
+export { handleSubmit, closeImageEditingForm, onPopupEscKeydown, unblockSubmitButton };
 

@@ -1,3 +1,5 @@
+import {unblockSubmitButton} from './form.js';
+
 const GET_URL = 'https://27.javascript.pages.academy/kekstagram-simple/data';
 const SEND_URL = 'https://27.javascript.pages.academy/kekstagram-simple';
 
@@ -31,7 +33,8 @@ const sendData = (onSuccess, showMessage, body) => {
     })
     .catch(() => {
       showMessage('Error2');
-    });
+    })
+    .finally(unblockSubmitButton);
 };
 
 export { getData, sendData };
