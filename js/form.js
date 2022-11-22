@@ -25,50 +25,31 @@ const DefaultValues = {
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeImageEditingForm();
+    onCloseImageEditingForm();
   }
 };
 
-const openImageEditingForm = () => {
+const onShowModal = () => {
   imgUploadOverlay.classList.remove('hidden');
-  imageScale.className = '';
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-uploadFile.addEventListener('change', openImageEditingForm);
-closeButton.addEventListener('click', closeImageEditingForm);
+uploadFile.addEventListener('change', onShowModal);
+closeButton.addEventListener('click', onCloseImageEditingForm);
 closeButton.addEventListener('keydown', onPopupEscKeydown);
 
-const showModal = () => {
-  imgUploadOverlay.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscapeKey);
-};
-
-const hideModal = () => {
+const onHideModal = () => {
   userForm.reset();
   resetScale();
   resetEffects();
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscapeKey);
+  document.removeEventListener('keydown', onPopupEscKeydown);
 };
 
-function onEscapeKey(evt) {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    hideModal();
-  }
-}
-
-uploadFile.addEventListener('change', showModal);
-closeButton.addEventListener('click', hideModal);
-userForm.addEventListener('click', (evt) => {
-  if (evt.target.className === 'img-upload__overlay') {
-    hideModal();
-  }
-});
+uploadFile.addEventListener('change', onShowModal);
+closeButton.addEventListener('click', onHideModal);
 
 const blockSubmitButton = () => {
   imgButtonSubmit.disabled = true;
@@ -96,12 +77,11 @@ const handleSubmit = (onSuccess) => {
       const data = new FormData(evt.target);
       blockSubmitButton();
       sendData(onSuccess, showMessage, data);
-      unblockSubmitButton();
     }
   });
 };
 
-function closeImageEditingForm () {
+function onCloseImageEditingForm () {
   imgUploadOverlay.classList.add('hidden');
   sliderElement.classList.add('hidden');
   imageScale.className = '';
@@ -115,5 +95,5 @@ function closeImageEditingForm () {
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-export { handleSubmit, closeImageEditingForm };
+export { handleSubmit, onCloseImageEditingForm, onPopupEscKeydown, unblockSubmitButton };
 

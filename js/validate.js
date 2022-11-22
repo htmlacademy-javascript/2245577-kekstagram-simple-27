@@ -15,4 +15,4 @@ pristine.addValidator(
   validateDescription
 );
 
-export {pristine};
+export { pristine };
